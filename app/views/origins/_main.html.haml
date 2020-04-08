@@ -1,1 +1,13 @@
 .main
+  .container
+    .row
+      .col-sm-6
+        .form-group
+          #datetimepicker1.input-group.date
+            %input.form-control{:type => "text"}/
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      :javascript
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });

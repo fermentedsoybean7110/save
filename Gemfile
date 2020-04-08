@@ -55,3 +55,6 @@ gem "haml-rails"
 gem 'erb2haml'
 gem "font-awesome-sass"
 gem "devise"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'bootstrap-sass'
