@@ -10,25 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200410014135) do
+ActiveRecord::Schema.define(version: 20200410060713) do
 
-  create_table "income_genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
+  create_table "igenres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "incomes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.date     "date",            null: false
+    t.integer  "igenre_id"
+    t.date     "date",       null: false
     t.string   "name"
-    t.integer  "amount",          null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "IncomeGenre_id"
-    t.integer  "income_genre_id"
-    t.index ["IncomeGenre_id"], name: "index_incomes_on_IncomeGenre_id", using: :btree
-    t.index ["income_genre_id"], name: "index_incomes_on_income_genre_id", using: :btree
+    t.integer  "amount",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["igenre_id"], name: "index_incomes_on_igenre_id", using: :btree
     t.index ["user_id"], name: "index_incomes_on_user_id", using: :btree
   end
 
@@ -46,6 +44,6 @@ ActiveRecord::Schema.define(version: 20200410014135) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "incomes", "income_genres"
+  add_foreign_key "incomes", "igenres"
   add_foreign_key "incomes", "users"
 end

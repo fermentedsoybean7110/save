@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IncomeGenreTest < ActiveSupport::TestCase
+class IgenreTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
