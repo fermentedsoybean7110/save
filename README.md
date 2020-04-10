@@ -1,24 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Users Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|name|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
 
-Things you may want to cover:
+### Asociation
+- has many :incomes
+- has many :expenses
 
-* Ruby version
+## Incomes Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|year|integer|null: false|
+|month|integer|null: false|
+|genre_id|integer|null: false, foreign_key: true|
+|name|string|
+|amount|integer|null: false|
 
-* System dependencies
 
-* Configuration
+### Asociation
+- belongs to user
+- belongs to income_genre
 
-* Database creation
+## Income_genre Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|name|string|null: false|
 
-* Database initialization
+### Asociation
+- has many incomes
 
-* How to run the test suite
+## expense
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|year|integer|null: false|
+|month|integer|null: false|
+|day|integer|null: false|
+|genre_id|integer|null: false, foreign_key: true|
+|name|string|
+|amount|integer|null :false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Asociation
+- belongs to user
+- belongs to expense_genre
 
-* Deployment instructions
+## Expense_genre Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|name|string|null: false|
 
-* ...
+### Asociation
+- has many expenses
