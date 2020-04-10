@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy" 
   end
   root "origins#index"
-  
+  resources :incomes, only: [:new, :create]
 end

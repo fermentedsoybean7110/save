@@ -17,8 +17,7 @@
 |------|----|-------|
 |id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|year|integer|null: false|
-|month|integer|null: false|
+|date|date|null: false|
 |genre_id|integer|null: false, foreign_key: true|
 |name|string|
 |amount|integer|null: false|
@@ -28,7 +27,7 @@
 - belongs to user
 - belongs to income_genre
 
-## Income_genre Table
+## IncomeGenre Table
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
@@ -42,9 +41,7 @@
 |------|----|-------|
 |id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|year|integer|null: false|
-|month|integer|null: false|
-|day|integer|null: false|
+|date|date|null: false|
 |genre_id|integer|null: false, foreign_key: true|
 |name|string|
 |amount|integer|null :false|
@@ -53,7 +50,7 @@
 - belongs to user
 - belongs to expense_genre
 
-## Expense_genre Table
+## ExpenseGenre Table
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|

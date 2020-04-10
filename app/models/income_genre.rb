@@ -1,0 +1,2 @@
+class IncomeGenre < ApplicationRecord
+end
