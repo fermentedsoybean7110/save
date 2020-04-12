@@ -8,9 +8,7 @@ class IncomesController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
-    @incomes = Income.all
-  end
+  
   
   private
   def income_params
