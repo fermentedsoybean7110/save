@@ -9,13 +9,13 @@
   .field
     = f.collection_select :genre_ids, Genre.all, :id, :genre
   .field
-    = f.label :title
+    = f.label :title, "内容"
     = f.text_field :title
   .field
-    = f.label :date
+    = f.label :date, "日時"
     = f.date_field :date
   .field
-    = f.label :amount
+    = f.label :amount, "金額"
     = f.number_field :amount
   .actions
-    = f.submit 'Save'
+    = f.submit '記録'
