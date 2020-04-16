@@ -4,15 +4,15 @@
   %b Title:
   = @event.title
 %p
-  %b Body:
-  = @event.body
+  %b genre:
+  = @event.genres&.first&.genre
 %p
-  %b Start date:
-  = @event.start_date
+  %b Date:
+  = @event.date
 %p
-  %b End date:
-  = @event.end_date
+  %b Amount:
+  = @event.amount
 
 = link_to 'Edit', edit_event_path(@event)
 \|
-= link_to 'Back', events_path
+= link_to 'Back', root_path

@@ -11,6 +11,7 @@
 ### Asociation
 - has many :incomes
 - has many :expenses
+- has many :events 
 
 ## Incomes Table
 |Column|Type|Options|
@@ -25,16 +26,7 @@
 
 ### Asociation
 - belongs to user
-- belongs to income_genre
-
-## IncomeGenre Table
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|null: false|
-|name|string|null: false|
-
-### Asociation
-- has many incomes
+- belogs to event
 
 ## expense
 |Column|Type|Options|
@@ -48,13 +40,40 @@
 
 ### Asociation
 - belongs to user
-- belongs to expense_genre
+- belongs to events
 
-## ExpenseGenre Table
+## event
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|date|date|null: false|
+|genre_id|integer|null: false, foreign_key: true|
+|name|string|
+|amount|integer|null :false|
+
+### Asociation
+- belongs to user
+- has many genres through event_genre
+- belongs to income
+- belongs to expense
+
+## Genre Table
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
 |name|string|null: false|
 
 ### Asociation
-- has many expenses
+- has many events through event_genre
+
+## event_genre
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|event_id|integer|null: false, foreign_key: true|
+|genre_id|integer|null: false, foreign_key: true|
+
+### Asociation
+- belongs to event
+- belongs to genre
