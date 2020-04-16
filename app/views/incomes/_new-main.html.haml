@@ -1,0 +1,11 @@
+.main
+  = form_for @income do |f|
+    = f.label :date, "日付"
+    = f.date_field :date
+    = f.label :igenre_id, "分類"
+    = f.number_field :igenre_id
+    = f.label :date, "内容"
+    = f.text_field :name
+    = f.label :amount, "金額"
+    = f.number_field :amount
+    = f.submit "Send"

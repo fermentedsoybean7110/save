@@ -1,24 +1,79 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Users Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|name|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
 
-Things you may want to cover:
+### Asociation
+- has many :incomes
+- has many :expenses
+- has many :events 
 
-* Ruby version
+## Incomes Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|date|date|null: false|
+|genre_id|integer|null: false, foreign_key: true|
+|name|string|
+|amount|integer|null: false|
 
-* System dependencies
 
-* Configuration
+### Asociation
+- belongs to user
+- belogs to event
 
-* Database creation
+## expense
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|date|date|null: false|
+|genre_id|integer|null: false, foreign_key: true|
+|name|string|
+|amount|integer|null :false|
 
-* Database initialization
+### Asociation
+- belongs to user
+- belongs to events
 
-* How to run the test suite
+## event
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|date|date|null: false|
+|genre_id|integer|null: false, foreign_key: true|
+|name|string|
+|amount|integer|null :false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Asociation
+- belongs to user
+- has many genres through event_genre
+- belongs to income
+- belongs to expense
 
-* Deployment instructions
+## Genre Table
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|name|string|null: false|
 
-* ...
+### Asociation
+- has many events through event_genre
+
+## event_genre
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|event_id|integer|null: false, foreign_key: true|
+|genre_id|integer|null: false, foreign_key: true|
+
+### Asociation
+- belongs to event
+- belongs to genre
