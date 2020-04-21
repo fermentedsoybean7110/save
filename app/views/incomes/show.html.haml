@@ -1,0 +1,20 @@
+-# %p#notice= notice
+
+-# %p
+-#   %b Title:
+-#   = @income.event.title
+-# %p
+-#   %b genre:
+-#   = @income.genres&.first&.genre
+-# %p
+-#   %b Date:
+-#   = @income.date
+-# %p
+-#   %b Amount:
+-#   = @income.income.amount
+
+-# = link_to 'Edit', edit_income_path(@income)
+-# \|
+-# = link_to 'Back', root_path
+-# \|
+-# = link_to 'Destroy', @income, method: :delete, data: { confirm: 'Are you sure?' }

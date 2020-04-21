@@ -1,8 +1,8 @@
 .side
   .side__title
-    Save Money
+    Money Save
   .side__user
-    = current_user.name
+    User名(仮)
     .side__user__icon
       = link_to edit_user_registration_path do
         = icon('fas', 'user-edit')
@@ -10,8 +10,5 @@
         = icon('fas', 'sign-out-alt')
   .side__info
     .side__info__register
-      = link_to '収入登録', new_income_path
-    .side__info__try
-      = link_to '支出登録', new_expense_path
-      
+      = link_to "戻る", root_path 
     
