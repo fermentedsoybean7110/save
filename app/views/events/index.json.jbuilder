@@ -10,4 +10,3 @@ json.array!(@events) do |event|
     json.color ""
   end
 end
-
