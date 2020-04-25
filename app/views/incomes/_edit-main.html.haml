@@ -1,6 +1,21 @@
+= form_for @income do |f|
+  - if @income.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@income.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @income.errors.full_messages.each do |message|
+          %li= message
+
 .main
-  = @incomes.each do |income|
-  %income.date
-  %income.name
-  %income.amount
-  -# 一旦停止
+  = form_for @income do |f|
+    .form-group
+      = f.label :amount, "金額"
+      = f.number_field :amount
+    = f.fields_for :event do |e|
+      .form-group
+        = e.collection_select :genre_ids, Genre.all, :id, :genre
+        = e.label :date, "日付"
+        = e.date_field :date
+        = e.label :title, "名前"
+        = e.text_field :title
+    = f.submit "Send"

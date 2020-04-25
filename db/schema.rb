@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200415082338) do
+ActiveRecord::Schema.define(version: 20200420091107) do
 
   create_table "event_genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_id"
@@ -23,18 +23,35 @@ ActiveRecord::Schema.define(version: 20200415082338) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "income_id"
     t.date     "date"
-    t.integer  "amount"
+    t.integer  "expense_id"
+    t.index ["expense_id"], name: "index_events_on_expense_id", using: :btree
+    t.index ["income_id"], name: "index_events_on_income_id", using: :btree
+  end
+
+  create_table "expenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "amount",     null: false
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_expenses_on_user_id", using: :btree
   end
 
   create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "incomes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "amount",     null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_incomes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,5 +70,8 @@ ActiveRecord::Schema.define(version: 20200415082338) do
 
   add_foreign_key "event_genres", "events"
   add_foreign_key "event_genres", "genres"
-  add_foreign_key "events", "users"
+  add_foreign_key "events", "expenses"
+  add_foreign_key "events", "incomes"
+  add_foreign_key "expenses", "users"
+  add_foreign_key "incomes", "users"
 end

@@ -1,5 +1,5 @@
 class RemoveGenreIdFromEvent < ActiveRecord::Migration[5.0]
   def change
-    remove_column :events, :genre_id, :integer
+    remove_reference :events, :genre, foreign_key: true
   end
 end
