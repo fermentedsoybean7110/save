@@ -6,12 +6,14 @@
   padding-top: 20vh;
   text-align: center;
   font-size: 40px;
+  margin:0 auto;
   &__field {
     width: 50%;
     text-align: center;
     margin: 0 auto;
     &__box {
-      height: 100px;
+      height: 20px;
+      display: flex;
     }
   }
   &__actions {
